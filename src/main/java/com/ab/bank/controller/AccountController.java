@@ -20,14 +20,16 @@ public class AccountController {
     private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
     @GetMapping(PATH)
-    public List<Account> getAcccounts() {
+    public ResponseEntity<List<Account>> getAcccounts() {
         Account account = new Account(1l, "fN", "Ln");
-        return Arrays.asList(account);
+        List<Account> accounts = Arrays.asList(account);
+        return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
 
     @GetMapping(PATH + "/{id}")
-    public Account getAcccount(@PathVariable long id) {
-        return new Account(1l, "fN", "Ln");
+    public ResponseEntity<Account> getAcccount(@PathVariable long id) {
+        Account account = new Account(1l, "fN", "Ln");
+        return new ResponseEntity<>(account, HttpStatus.OK);
     }
 
     @PostMapping(PATH + "/{id}")

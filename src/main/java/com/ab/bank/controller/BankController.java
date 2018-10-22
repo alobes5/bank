@@ -3,6 +3,8 @@ package com.ab.bank.controller;
 import com.ab.bank.model.Bank;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +16,9 @@ public class BankController {
     private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
     @GetMapping(PATH + "/{id}")
-    public Bank getBank(@PathVariable long id) {
-        return new Bank(1, "fn", "ln", "IBAN");
+    public ResponseEntity<Bank> getBank(@PathVariable long id) {
+        Bank bank = new Bank(1, "fn", "ln", "IBAN");
+        return new ResponseEntity<>(bank, HttpStatus.OK);
     }
 
 }
