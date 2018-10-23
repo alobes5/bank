@@ -1,6 +1,9 @@
 package com.ab.bank.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.NotNull;
 
@@ -34,5 +37,41 @@ public class Bank {
 
     public String getIBAN() {
         return IBAN;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("firstName", firstName)
+                .append("lastName", lastName)
+                .append("IBAN", IBAN)
+                .toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Bank bank = (Bank) o;
+
+        return new EqualsBuilder()
+                .append(id, bank.id)
+                .append(firstName, bank.firstName)
+                .append(lastName, bank.lastName)
+                .append(IBAN, bank.IBAN)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(firstName)
+                .append(lastName)
+                .append(IBAN)
+                .toHashCode();
     }
 }

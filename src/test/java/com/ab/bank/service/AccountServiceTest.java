@@ -45,7 +45,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void getAccount() {
+    public void getValidAccount() {
         Account actual = service.getAccount(1l);
         Account expected = getAnExpectedAccount();
 
