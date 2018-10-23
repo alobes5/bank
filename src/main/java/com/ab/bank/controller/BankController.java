@@ -1,8 +1,10 @@
 package com.ab.bank.controller;
 
 import com.ab.bank.model.Bank;
+import com.ab.bank.service.BankService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +17,16 @@ public class BankController {
     private static final String PATH = "/bank";
     private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
+    private BankService service;
+
+    @Autowired
+    public BankController(BankService service) {
+        this.service = service;
+    }
+
     @GetMapping(PATH + "/{id}")
     public ResponseEntity<Bank> getBank(@PathVariable long id) {
-        Bank bank = new Bank(1, "fn", "ln", "IBAN");
-        return new ResponseEntity<>(bank, HttpStatus.OK);
+        return new ResponseEntity<>(service.getBankAccount(id), HttpStatus.OK);
     }
 
 }
