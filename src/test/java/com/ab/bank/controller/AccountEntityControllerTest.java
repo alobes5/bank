@@ -15,7 +15,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AccountControllerTest {
+public class AccountEntityControllerTest {
 
     @Autowired
     private WebApplicationContext wac;

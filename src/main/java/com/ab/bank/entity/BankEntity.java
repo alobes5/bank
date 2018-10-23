@@ -1,19 +1,18 @@
-package com.ab.bank.model;
+package com.ab.bank.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-import javax.validation.constraints.NotNull;
+@Entity
+public class BankEntity {
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Bank {
-
-    @NotNull
+    @Id
     private long id;
     private String firstName;
     private String lastName;
     private String IBAN;
 
-    public Bank(long id, String firstName, String lastName, String IBAN) {
+    public BankEntity(long id, String firstName, String lastName, String IBAN) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
