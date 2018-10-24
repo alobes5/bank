@@ -2,7 +2,6 @@ package com.ab.bank.controller;
 
 import com.ab.bank.model.Account;
 import com.ab.bank.service.AccountService;
-import com.sun.xml.internal.bind.v2.TODO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ import java.util.List;
 public class AccountController {
 
     private static final String PATH = "/accounts";
-    private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
+    private final Logger log = LoggerFactory.getLogger(getClass().getSimpleName());
 
     private AccountService service;
 
