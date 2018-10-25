@@ -1,9 +1,9 @@
 package com.ab.bank.service;
 
 import com.ab.bank.BankApplication;
-import com.ab.bank.entity.AccountEntity;
+import com.ab.bank.entity.BankAccountEntity;
 import com.ab.bank.model.Account;
-import com.ab.bank.repository.AccountRepository;
+import com.ab.bank.repository.BankAccountRepository;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,7 +23,7 @@ import java.util.List;
 public class AccountServiceTest {
 
     @Autowired
-    private AccountRepository repository;
+    private BankAccountRepository repository;
 
     @Autowired
     private AccountService service;
@@ -45,6 +45,14 @@ public class AccountServiceTest {
     }
 
     @Test
+    public void saveAccount(){
+        BankAccountEntity actual = service.save(1l);
+        BankAccountEntity expected = getAValidAccountEntity();
+
+        Assert.assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
+    }
+
+    @Test
     public void getValidAccount() {
         Account actual = service.getAccount(1l);
         Account expected = getAnExpectedAccount();
@@ -61,7 +69,7 @@ public class AccountServiceTest {
         return Arrays.asList(getAnExpectedAccount());
     }
 
-    private AccountEntity getAValidAccountEntity() {
-        return new AccountEntity(1l, "Aline", "Busato");
+    private BankAccountEntity getAValidAccountEntity() {
+        return new BankAccountEntity(1l, "Aline", "Busato", "DE89370400440532013081");
     }
 }

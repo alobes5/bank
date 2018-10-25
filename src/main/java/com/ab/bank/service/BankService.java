@@ -1,24 +1,24 @@
 package com.ab.bank.service;
 
-import com.ab.bank.entity.BankEntity;
+import com.ab.bank.entity.BankAccountEntity;
 import com.ab.bank.model.Bank;
-import com.ab.bank.repository.BankRepository;
+import com.ab.bank.repository.BankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BankService {
-
-    private BankRepository repository;
+    private BankAccountRepository repository;
 
     @Autowired
-    public BankService(BankRepository repository) {
+    public BankService(BankAccountRepository repository) {
         this.repository = repository;
     }
 
     public Bank getBankAccount(long id) {
-        BankEntity bankEntity = repository.findById(id).get();
+        BankAccountEntity bankAccountEntity = repository.findById(id).get();
 
-        return new Bank(bankEntity.getId(), bankEntity.getFirstName(), bankEntity.getLastName(), bankEntity.getIBAN());
+        return new Bank(bankAccountEntity.getId(), bankAccountEntity.getFirstName(), bankAccountEntity.getLastName(), bankAccountEntity.getIBAN());
     }
+
 }

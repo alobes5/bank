@@ -39,7 +39,7 @@ public class AccountController {
 
     @PostMapping(PATH + "/{id}")
     public ResponseEntity createAnAccount(@PathVariable long id) {
-        //TODO: implement post
+        service.save(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

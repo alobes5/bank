@@ -18,7 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BankEntityControllerITest {
+public class BankAccountEntityControllerITest {
 
     @Autowired
     private WebApplicationContext wac;
