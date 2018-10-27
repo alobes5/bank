@@ -11,15 +11,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
-        auth.inMemoryAuthentication().passwordEncoder(org.springframework.security.crypto.password.NoOpPasswordEncoder.getInstance()).withUser("user1").password("secret1")
-                .roles("USER").and().withUser("admin").password("admin")
+        auth.inMemoryAuthentication()
+                .passwordEncoder(org.springframework.security.crypto.password.NoOpPasswordEncoder.getInstance())
+                .withUser("user").password("pwd")
+                .roles("USER").and().withUser("admin").password("pwd")
                 .roles("USER", "ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic().and().authorizeRequests().antMatchers("/accounts/**", "/bank/**")
-                .hasRole("USER").antMatchers("/**").hasRole("ADMIN").and()
+
+        http.httpBasic().and()
+                .authorizeRequests()
+                .antMatchers("/students/**")
+                .hasRole("USER")
+                .antMatchers("/accounts/**", "/bank/**")
+                .hasRole("ADMIN")
+                .and()
                 .csrf().disable().headers().frameOptions().disable();
     }
 }

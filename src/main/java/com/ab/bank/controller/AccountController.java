@@ -29,16 +29,19 @@ public class AccountController {
 
     @GetMapping(PATH)
     public ResponseEntity<List<Account>> getAcccounts() {
+        log.info("Getting the accounts");
         return new ResponseEntity<>(service.getAccounts(), HttpStatus.OK);
     }
 
     @GetMapping(PATH + "/{id}")
     public ResponseEntity<Account> getAcccount(@PathVariable long id) {
+        log.info("Getting the account: {}",id);
         return new ResponseEntity<>(service.getAccount(id), HttpStatus.OK);
     }
 
     @PostMapping(PATH + "/{id}")
     public ResponseEntity createAnAccount(@PathVariable long id) {
+        log.info("Saving the account: {}",id);
         service.save(id);
         return new ResponseEntity(HttpStatus.OK);
     }

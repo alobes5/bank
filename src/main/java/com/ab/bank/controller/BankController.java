@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BankController {
 
     private static final String PATH = "/bank";
-    private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
+    private final Logger log = LoggerFactory.getLogger(getClass().getSimpleName());
 
     private BankService service;
 
@@ -26,6 +26,7 @@ public class BankController {
 
     @GetMapping(PATH + "/{id}")
     public ResponseEntity<Bank> getBank(@PathVariable long id) {
+        log.info("Getting the Bank: {}",id);
         return new ResponseEntity<>(service.getBankAccount(id), HttpStatus.OK);
     }
 
